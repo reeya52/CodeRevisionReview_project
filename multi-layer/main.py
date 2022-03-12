@@ -17,7 +17,6 @@ def plot_accuracy_graph(train_accuracy_matrix, test_accuracy_matrix):
     """
 
     train_epoch = train_accuracy_matrix[0]
-    # print("train_epoch",train_epoch)
     train_accuracy = train_accuracy_matrix[1]
     plt.plot(train_epoch, train_accuracy, label = "Training Accuracy", linestyle = 'dashed')
 
@@ -59,9 +58,6 @@ def main():
     data_train=np.array(data_train)
     data_test = np.array(data_test)
 
-    rows_train_data, columns_train_data=data_train.shape
-    rows_test_data, columns_test_data = data_test.shape
-
     Y_train = data_train[:,0]
     Y_test = data_test[:,0]
 
@@ -78,14 +74,16 @@ def main():
 
 
     print("Data Loaded..\n")
-    print("No of Train Data samples : ", rows_train_data)
+    print("No of Train Data samples : ", data_train.shape[0])
     print("Entering MLP\n\n\n")
-    # print(Y_train_target[0].shape)
-    print("As of now mlp function has not been implemented. It will be implemented in future iterations")
 
     hidden_units = 20
-    train_accuracy_matrix, test_accuracy_matrix= mlp(biased_X_train, Y_train_target, biased_X_test, Y_test_target, 20, 50, 0.1, 0.9)
+    epochs = 50
+    learning_rate = 0.1
+    momentum = 0.9
+    train_accuracy_matrix, test_accuracy_matrix= mlp(biased_X_train, Y_train_target, biased_X_test, Y_test_target, hidden_units, epochs, learning_rate, momentum)
     
+    # Uncomment below commented block of code to run the MUlti Layer Perceptron with half of the data set.
     # np.random.shuffle(data_train)
 
     # half_data_train = data_train[0:30000]
