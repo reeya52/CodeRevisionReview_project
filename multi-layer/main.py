@@ -28,7 +28,7 @@ def plot_accuracy_graph(train_accuracy_matrix, test_accuracy_matrix):
     plt.xlabel('epochs')
     plt.ylabel('accuracy')
 
-    plt.title("Experiment-3 \n epochs = 50 learning rate = 0.1  hidden_units = 100 \n momentum = 0.9")
+    plt.title("epochs = 50 learning rate = 0.1  hidden_units = 100 \n momentum = 0.9")
 
     plt.legend()
     plt.show()
