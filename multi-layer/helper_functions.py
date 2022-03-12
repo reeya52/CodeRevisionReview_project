@@ -79,8 +79,6 @@ def initialize_weight_matrix(no_of_units_to_be_activated, no_of_inputs, flag=1, 
 
     """
 
-    # if(flag==0):
-    # input_array=reshape_matrix(input_array, (1, input_array.shape[0]))
     if(flag_w2==1):
         weight_matrix = np.random.uniform(-0.05, 0.05, (no_of_units_to_be_activated, no_of_inputs+1))    
     else:
