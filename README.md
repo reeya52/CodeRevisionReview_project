@@ -37,14 +37,14 @@ Now, based on the values of hyperparameters like *epochs* and *learning rate*, t
 
    - At each output compute 
 
-       - $\sum_{i=0}^{n} w_i x_i$
+       - ![Output formula](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\sum_{i=0}^{n}&space;w_i&space;x_i)
 
    - The output with highest value is the prediction
    - If correct, do nothing and continue to the next sample. If incorrect, update the weights with the following formula
 
-       - $w_i \leftarrow w_i +  \Delta w_i$
+       - ![Weight Update Formula](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}w_i&space;\leftarrow&space;w_i&space;&plus;&space;\Delta&space;w_i)
 
-           where $\Delta w_i = \eta (t^k - y^k) x_i^k$
+           where ![Delta W formula](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\Delta&space;w_i&space;=&space;\eta&space;(t^k&space;-&space;y^k)&space;x_i^k)
 
 We will follow the above described algorithm for each sample and update the weights accordingly and this will be iteratively done for mentioned number of `epochs` times.
 
@@ -68,27 +68,28 @@ In this project we have implemented a neural network that has one hidden layer b
     
    - Calculate Error Terms
 
-       - For each output unit *k*, calculate error term $\delta_k$:
+       - For each output unit *k*, calculate error term ![Delta K](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\delta_k):
 
-           - $\delta_k\leftarrow o_k (1-o_k)(t_k-o_k)$
+           - ![Error Term at Output Unit](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\delta_k\leftarrow&space;o_k&space;(1-o_k)(t_k-o_k))
 
-       - For each hidden unit j, calculate error term $\delta_j$:
+       - For each hidden unit j, calculate error term ![Delta J](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\delta_j)
+       
+           - ![Error Term at Hidden Unit](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\delta_j\leftarrow&space;h_j&space;(1-h_j)(\sum_{k\in&space;output\,units}&space;w_{kj}&space;\delta_k))
 
-           - $\delta_j\leftarrow h_j (1-h_j)(\sum_{k\in output\,units} w_{kj} \delta_k)$
-    
+
    - Update Weights
 
-       - Hidden to Output Layer: For each weight $w_{kj}$
+       - Hidden to Output Layer: For each weight ![weight term](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}w_{kj})
 
-           - $w_{kj} \leftarrow w_{kj} + \Delta w_{kj}$, 
+           - ![Weight Update Hidden to Output](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}w_{kj}&space;\leftarrow&space;w_{kj}&space;&plus;&space;\Delta&space;w_{kj}), 
                                 
-                where $\Delta w_{kj} = \eta \delta_k h_j$
+                where ![Delta W](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\Delta&space;w_{kj}&space;=&space;\eta&space;\delta_k&space;h_j)
 
-       - Input to Hidden Layer: For each weight $w_{ji}$
+       - Input to Hidden Layer: For each weight ![weight term](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}w_{ji})
 
-           - $w_{ji} \leftarrow w_{ji} + \Delta w_{ji}$
+           - ![Weight Update Input to Hidden](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}w_{ji}&space;\leftarrow&space;w_{ji}&space;&plus;&space;\Delta&space;w_{ji})
 
-                where $\Delta w_{ji} = \eta\delta_j x_i$ 
+                where ![Delta W](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\Delta&space;w_{ji}&space;=&space;\eta\delta_j&space;x_i)
                         
 We will perform the above described algorithm iteratively until a stopping condition is satisfied, which in out case is the number of `epochs`. 
 
@@ -96,9 +97,9 @@ To avoid falling into a local minimum of the loss function, we also use a hyperp
 
 The weight updates with momentum will go as follows:
 
-   - $\Delta w_{kj}^t = \eta \delta_k h_j + \alpha \Delta w_{kj}^{t-1}$ (hidden to output)
+   - ![Weight Update with momentum](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\Delta&space;w_{kj}^t&space;=&space;\eta&space;\delta_k&space;h_j&space;&plus;&space;\alpha&space;\Delta&space;w_{kj}^{t-1}) (hidden to output)
 
-   - $\Delta w_{ji}^t = \eta \delta_j x_i + \alpha \Delta w_{ji}^{t-1}$ (input to hidden)
+   - ![Weight Update with momentum](https://latex.codecogs.com/png.image?\dpi{110}\bg{white}\Delta&space;w_{ji}^t&space;=&space;\eta&space;\delta_j&space;x_i&space;&plus;&space;\alpha&space;\Delta&space;w_{ji}^{t-1}) (input to hidden)
 
 ## Instructions for running the code
 
