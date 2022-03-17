@@ -26,9 +26,7 @@ def plot_accuracy_graph(train_accuracy_matrix, test_accuracy_matrix):
 
     plt.xlabel('epochs')
     plt.ylabel('accuracy')
-
     plt.title("epochs = 50 learning rate = 0.1  hidden_units = 100 \n momentum = 0.9")
-
     plt.legend()
     plt.show()
 
@@ -55,7 +53,7 @@ def main():
     data_train = pd.read_csv('MNIST_Dataset/mnist_train.csv')
     data_test= pd.read_csv('MNIST_Dataset/mnist_test.csv')
 
-    data_train=np.array(data_train)
+    data_train = np.array(data_train)
     data_test = np.array(data_test)
 
     Y_train = data_train[:,0]
